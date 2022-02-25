@@ -19,7 +19,7 @@ bolt_app = App(
 handler = SlackRequestHandler(bolt_app)
 
 
-@bolt_app.command('/test')
+@bolt_app.command('/ars')
 def t(ack, respond, command):
     ack()
     if 'text' in command:
