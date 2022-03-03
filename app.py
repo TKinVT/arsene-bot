@@ -21,9 +21,9 @@ bolt_app = App(
 handler = SlackRequestHandler(bolt_app)
 
 
-#####################
-# ARSENAL INFO ROUTES
-#####################
+##############################
+# ARSENAL INFO SLACK FUNCTIONS
+##############################
 @bolt_app.command('/ars')
 def arsenal_info(ack, respond, command):
     ack()
@@ -35,11 +35,11 @@ def arsenal_info(ack, respond, command):
         respond(get_info())
 
 
-###################
-# SOCCERINVT ROUTES
-###################
+############################
+# SOCCERINVT SLACK FUNCTIONS
+############################
 @bolt_app.action('search_photos')
-def handle_new_post_modal(ack, body):
+def search_photos(ack, body):
     ack()
 
     view_id = body['view']['id']
@@ -51,7 +51,7 @@ def handle_new_post_modal(ack, body):
 
 
 @bolt_app.action('image_selection')
-def select_post_photo(ack, action, body, client):
+def select_photo(ack, action, body, client):
     ack()
 
     view_id = body['view']['id']
@@ -96,7 +96,9 @@ def new_post_modal(ack, body, client):
         ack(response_action='update', view=modal_confirmation_view())
 
 
+##############
 # Flask Routes
+##############
 @app.route('/slack/events', methods=['POST'])
 def slack_events():
     return handler.handle(request)
