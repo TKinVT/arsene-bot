@@ -38,7 +38,10 @@ def parser(text):
 
     elif 'update' == text[:6]:
         aspect = text[6:].strip()
-        r = update(aspect)
+        if aspect in ['scores', 'results', 'fixtures']:
+            r = update('matches')
+        else:
+            r = update(aspect)
         result = r['result']
 
         if result == 'okay':
