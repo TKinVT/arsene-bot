@@ -1,6 +1,7 @@
 import datetime
 
 from arsenal import arsenal_api
+from arsenal.arsenal_api import update
 
 COMPETITION_DICT = {
     'Premier League': 'PL',
@@ -24,8 +25,28 @@ def parser(text):
         'team': get_squad
     }
 
+    # update_opts = {
+    #     'scores': update('matches'),
+    #     'results': update('matches'),
+    #     'fixtures': update('matches'),
+    #     'squad': update('squad'),
+    #     'table': update('table'),
+    # }
+
     if text in options:
         return options[text]()
+
+    elif 'update' == text[:6]:
+        aspect = text[6:].strip()
+        r = update(aspect)
+        result = r['result']
+
+        if result == 'okay':
+            return options[aspect]()
+
+        else:
+            return r['result']
+
     else:
         return help_info
 

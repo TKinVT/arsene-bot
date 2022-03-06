@@ -33,11 +33,11 @@ def table():
     return r.json()
 
 
-def meta_info():
-    r = requests.get(API_URL + '/meta_info')
+def update(aspect):
+    r = requests.post(API_URL + f'/update/{aspect}')
     return r.json()
 
 
-if __name__ == '__main__':
-    import pprint
-    pprint.pprint(squad())
+def meta_info():
+    r = requests.get(API_URL + '/meta_info')
+    return r.json()
