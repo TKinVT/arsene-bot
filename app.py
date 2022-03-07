@@ -24,7 +24,7 @@ handler = SlackRequestHandler(bolt_app)
 ##############################
 # ARSENAL INFO SLACK FUNCTIONS
 ##############################
-@bolt_app.command('/test')
+@bolt_app.command('/ars')
 def arsenal_info(ack, respond, command):
     ack()
 
