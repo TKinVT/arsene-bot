@@ -18,6 +18,7 @@ def parser(text):
     options = {
         '': get_info,
         'fixtures': get_fixtures,
+        'reddit': get_reddit_posts,
         'results': get_results,
         'scores': get_results,
         'squad': get_squad,
@@ -211,6 +212,16 @@ def get_squad():
                 f"{str('%.2f' % player['pl_rating']).center(4)}\n"
 
     text += '```'
+
+    return text
+
+
+def get_reddit_posts():
+    posts = arsenal_api.reddit_posts()
+    text = "*:arsenal: What's Hot on Reddit*\n"
+
+    for post in posts:
+        text = text + f"<{post['url']}|{post['title']}>\n"
 
     return text
 

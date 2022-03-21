@@ -23,6 +23,11 @@ def player(number):
     return r.json()
 
 
+def reddit_posts():
+    r = requests.get(API_URL + '/reddit_posts')
+    return r.json()
+
+
 def results():
     r = requests.get(API_URL + '/results')
     return r.json()
