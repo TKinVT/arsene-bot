@@ -26,14 +26,6 @@ def parser(text):
         'team': get_squad
     }
 
-    # update_opts = {
-    #     'scores': update('matches'),
-    #     'results': update('matches'),
-    #     'fixtures': update('matches'),
-    #     'squad': update('squad'),
-    #     'table': update('table'),
-    # }
-
     if text in options:
         return options[text]()
 
@@ -224,8 +216,3 @@ def get_reddit_posts():
         text = text + f"<{post['url']}|{post['title']}>\n"
 
     return text
-
-
-if __name__ == '__main__':
-    req = get_info()
-    print(req)
