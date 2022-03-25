@@ -38,6 +38,11 @@ def table():
     return r.json()
 
 
+def tweets():
+    r = requests.get(API_URL + '/tweets')
+    return r.json()
+
+
 def update(aspect):
     r = requests.post(API_URL + f'/update/{aspect}')
     return r.json()

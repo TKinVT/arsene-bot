@@ -23,7 +23,8 @@ def parser(text):
         'scores': get_results,
         'squad': get_squad,
         'table': get_table,
-        'team': get_squad
+        'team': get_squad,
+        'tweets': get_tweets
     }
 
     if text in options:
@@ -214,5 +215,15 @@ def get_reddit_posts():
 
     for post in posts:
         text = text + f"<{post['url']}|{post['title']}>\n"
+
+    return text
+
+
+def get_tweets():
+    tweets = arsenal_api.tweets()
+    text = "*:arsenal: Latest tweets from Arsenal*\n"
+
+    for tweet in tweets:
+        text = text + f"{tweet['text']}\n"
 
     return text
