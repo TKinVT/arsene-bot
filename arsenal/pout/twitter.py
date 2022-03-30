@@ -1,8 +1,17 @@
 import os
 
 import tweepy
+from dotenv import load_dotenv
 
 from arsenal.pout.models import TwitterUser
+
+load_dotenv()
+
+CONSUMER_KEY = os.getenv('TWITTER_CONSUMER_KEY')
+CONSUMER_SECRET = os.getenv('TWITTER_CONSUMER_SECRET')
+ACCESS_TOKEN = os.getenv('TWITTER_ACCESS_TOKEN')
+ACCESS_TOKEN_SECRET = os.getenv('TWITTER_TOKEN_SECRET')
+BEARER_TOKEN = os.getenv('TWITTER_BEARER_TOKEN')
 
 
 class Twitter:
@@ -45,15 +54,5 @@ class Twitter:
         for avoidant in avoidants:
             self.tkinvt_client.unmute(avoidant['twitter_id'])
 
-
-from dotenv import load_dotenv
-
-load_dotenv()
-
-CONSUMER_KEY = os.getenv('TWITTER_CONSUMER_KEY')
-CONSUMER_SECRET = os.getenv('TWITTER_CONSUMER_SECRET')
-ACCESS_TOKEN = os.getenv('TWITTER_ACCESS_TOKEN')
-ACCESS_TOKEN_SECRET = os.getenv('TWITTER_TOKEN_SECRET')
-BEARER_TOKEN = os.getenv('TWITTER_BEARER_TOKEN')
 
 tkinvt = Twitter(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET, BEARER_TOKEN)
